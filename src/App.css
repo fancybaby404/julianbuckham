@@ -1,0 +1,122 @@
+/* general */
+.sidebar {
+    background-color: black;
+}
+
+.home {
+    padding: 25vh 0;
+    background-color: #1e1e1e;
+    width: 100%;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+
+/* side bar */
+.prof-img {
+    margin: auto;
+}
+
+.sidebar--description {
+    margin: auto;
+    width: 210px;
+    margin: 0.76rem auto;
+}
+
+.sidebar--socials {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sidebar--socials-btn {
+    width: 210px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 8px;
+    color: black;
+    background-color: #fdc823;
+
+    text-align: start;
+}
+
+/* SIDEBAR ON MOBILE VIEW */
+@media screen and (max-width: 768px) {
+    .home {
+        padding-top: 0px;
+    }
+
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        align-items: center;
+        width: 100% !important;
+    }
+    .sidebar--img {
+        width: 80px !important;
+        margin-right: 20px;
+    }
+    .sidebar--description {
+        max-width: 435px;
+    }
+
+    .sidebar--text--img {
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar--socials {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar--socials-btn {
+        width: 200px;
+        margin: 10px;
+    }
+}
+
+/* CARD VIEWS */
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .home {
+        padding-top: 10px;
+    }
+
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar--socials {
+        /* width: 10px; */
+    }
+
+    .sidebar--socials--btn {
+        width: 210px;
+        margin-top: 10px;
+        border-radius: 5px;
+        padding: 8px;
+        color: black;
+        background-color: #fdc823;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
+}
+
+.card {
+    margin: 10px;
+}
