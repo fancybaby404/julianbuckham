@@ -3,6 +3,8 @@
     background-color: black;
 }
 
+.yellow-color {background-color: #fdc823;}
+
 .home {
     padding: 25vh 0;
     background-color: #1e1e1e;
@@ -47,7 +49,10 @@
 
 /* SIDEBAR ON MOBILE VIEW */
 @media screen and (max-width: 768px) {
+
+
     .home {
+        overflow-x: hidden;
         padding-top: 0px;
     }
 
@@ -56,6 +61,7 @@
     }
 
     .sidebar {
+        overflow-x: hidden;
         align-items: center;
         width: 100% !important;
     }
