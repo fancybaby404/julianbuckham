@@ -25,23 +25,30 @@ const spotifyAuth = {
 
 
 export default function MusicApp() {
-    // axios.get('https://api.spotify.com/v1/users/user_id/playlists/'), {headers: {
-    //     'Authorization': 'Bearer ' + spotifyAuth.clientKey
-    // }}
-    //     .then((response) => {
-    //         // handle success
-    //         console.log(response);
-    //     })
-    //     .catch((error) => {
-    //         // handle error
-    //         console.log(error);
-    //     })
-    //     .then(() => {
-    //         // always executed
-    //     });
+
+    axios.post(
+        'https://accounts.spotify.com/api/token',
+        {headers: {Accept: 'applications/json', 'Content-Type': 'application/x-www-form-urlencoded'}},
+        {auth: {username: spotifyAuth.clientID, password: spotifyAuth.clientSecret}}
+    )
+    .then(res => console.log(res.data))
+
+    // axios.get(
+    //     'https://api.spotify.com/v1/me/playlists', {
+    //         params: { limit: 50, offset: 0 },
+    //         headers: {
+    //             Accept: 'application/json',
+    //             Authorization: 'Bearer ' + spotifyAuth.clientKey,
+    //             'Content-Type': 'application/json',
+    //         },
+    // })
+    // .then(res => {
+    //     console.log(res)
+    // })
 
     // what im trying to do:
     // create a new obj with all the items in playLists with "isToggled" property
+
     const [playLists, setPlayLists] = React.useState(data)
 
 

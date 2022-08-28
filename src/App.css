@@ -3,7 +3,9 @@
     background-color: black;
 }
 
-.yellow-color {background-color: #fdc823;}
+.yellow-color {
+    background-color: #fdc823;
+}
 
 .home {
     padding: 25vh 0;
@@ -16,7 +18,16 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
 }
+.card-title {
+    color: #fdc823;
+}
 
+.card {
+    border-radius: 50px;
+    background: linear-gradient(145deg, inset 20px 20px 60px #1a1a1a, #1b1b1b);
+    box-shadow:  20px 20px 60px #1a1a1a,
+                 -20px -20px 60px #232323;
+}
 
 /* side bar */
 .prof-img {
@@ -49,8 +60,6 @@
 
 /* SIDEBAR ON MOBILE VIEW */
 @media screen and (max-width: 768px) {
-
-
     .home {
         overflow-x: hidden;
         padding-top: 0px;

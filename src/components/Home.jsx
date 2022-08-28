@@ -11,6 +11,7 @@ export default function Home () {
                 description={card.description}
                 img={card.img}
                 tags={card.tags}
+                link={card.link}
             />
         )
     })
