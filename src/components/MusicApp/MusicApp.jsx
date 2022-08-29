@@ -30,33 +30,6 @@ const SPOTIFY_URL_ACCOUNT = 'https://accounts.spotify.com/'
 const SPOTIFY_URL_API = 'https://api.spotify.com/v1/'
 
 export default function MusicApp() {
-
-    React.useEffect(() => {
-        const authParameters = {
-            method: "post",
-            url: 'https://accounts.spotify.com/api/token',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'grant_type=client_credentials&client_id=' + spotifyAuth.clientID + "&client_secret=" + spotifyAuth.clientKey
-        }
-
-        Promise.all([
-            fetch('https://accounts.spotify.com/api/token', authParameters),
-            fetch('https://')
-        ])
-            .then(response => console.log(response[0].status))
-            .then(result => result.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-
-
-    }, [])
-
     const [playLists, setPlayLists] = React.useState(data)
     const playlistElements = playLists.map((playList) => {
         const handleClick = () => {
