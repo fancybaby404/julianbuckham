@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Card(props) {
-    function handleClick () {
-    window.location.href=props.link
+    const handleClick =  () => {
+        window.location.href=props.link
     }
 
     return (
