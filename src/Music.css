@@ -1,0 +1,24 @@
+.playlist-image {
+    width: 30px;
+    background-color: red;
+}
+
+.playlist {
+    display: grid;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.playlist-table {
+    /* display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center; */
+
+    display: grid;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.body {
+    color: white;
+    background-color: #1e1e1e;
+}

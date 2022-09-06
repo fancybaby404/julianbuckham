@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from '../Nav/Nav'
+import '../../Music.css'
 
 // GLOBALS --------------------------------------------------------------
 const userName = 'macato404'
@@ -38,6 +39,7 @@ const postAuthParameters = {
     },
     body: 'grant_type=client_credentials&client_id=' + spotifyAuth.clientID + "&client_secret=" + spotifyAuth.clientKey
 }
+
 const getAuthParameters = (contentType, token) => {
     return {
         method: "GET",
@@ -49,113 +51,164 @@ const getAuthParameters = (contentType, token) => {
     }
 }
 
-let userInfo = null
-let playListInfo = null
 
 export default function MusicApp() {
     // API REQUESTS ----------------------------------------------------
-    const [accessToken, setAccessToken] = React.useState('')
+    const [token, setAccessToken] = React.useState({
+        access_token: null,
+        refresh_token: null
+    })
+    const [playLists, setPlayLists] = React.useState([])
+    const [userInfo, setUserInfo] = React.useState({
+        name: '',
+        id: '',
+        images: '',
+        external_urls: '',
+        followers: '',
+    })
 
-    React.useEffect(() => {
-        // fetch for token
-        fetch('https://accounts.spotify.com/api/token', postAuthParameters)
+    // FUNCTIONS 
+
+    // (0) ----------------------
+    let fetchToken = (isFetchingToken) => {
+        fetch('https://accounts.spotify.com/api/token', {
+            method: "post",
+            url: 'https://accounts.spotify.com/api/token',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'grant_type=client_credentials&client_id=' + spotifyAuth.clientID + "&client_secret=" + spotifyAuth.clientKey
+        })
             .then(result => result.json())
             .then(data => {
-                // after getting token:
-                setAccessToken(data.access_token)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-    }, [])
+                isFetchingToken = true
 
+                if (isFetchingToken) {
 
-    if (accessToken != null || accessToken != undefined) {
-        Promise.all([
-            // FETCH USER INFO
-            // https://api.spotify.com/v1/users/${username}/
-            fetch(URLS[0], getAuthParameters('application/json', accessToken))
-                .then(response => response.json())
-                .then(data => {
-                    userInfo = data
-                })
-                .catch((e) => console.log("userinfo err: " + e)),
+                    localStorage.setItem('token', data.access_token)
 
-            // FETCH PLAYLIST INFO
-            // https://api.spotify.com/v1/users/${userName}}/playlists
-            fetch(URLS[1], getAuthParameters('application/json', accessToken))
-                .then(response => response.json())
-                .then(data => {
-                    playListInfo = data
-                })
-                .catch((e) => console.log("playlist err: " + e))
-        ])
+                    setAccessToken((prev) => {
+                        return {
+                            ...prev,
+                            access_token: localStorage.getItem('token'),
+                        }
+                    })
+                    // console.log('---------------' + "\n" )
+                    // console.log(token)
 
-            // promiseAll: then ---------
-            .then(() => {
-
-                userInfo = {
-                    name: userInfo.display_name,
-                    id: userInfo.id,
-                    images: userInfo.images[0].url || "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
-                    external_urls: userInfo.external_urls.spotify,
-                    followers: userInfo.followers.total
+                    // Run again 
+                    // if (token.access_token == null) { fetchToken() }
                 }
-                
-                })
-            // promiseAll: catch ---------
-            .catch(e => {
-                console.log("Unsuccessfully fetched: " + e)
             })
     }
 
+    // (1) ----------------------
+    let fetchUserInfo = (isFetchingUserInfo) => {
+        fetch(URLS[0], getAuthParameters('application/json', token.access_token))
+            .then(response => response.json())
+            .then(data => {
+                isFetchingUserInfo = true
 
-    // PLAYLIST ELEMENT -------------------------------------------
-    const [playLists, setPlayLists] = React.useState(['', ''])
-    
-    console.log(playListInfo)
+                if (isFetchingUserInfo) {
+                    setUserInfo(prev => {
+                        return {
+                            ...prev,
+                            name: data.display_name,
+                            id: data.id,
+                            images: data.images[0].url || "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+                            external_urls: data.external_urls.spotify,
+                            followers: data.followers.total,
+                            isGood: true
+                        }
+                    })
 
-    const playlistElements = playLists.map((playList) => {
-        // console.log(playList)
+                    // Run again 
+                    if (!userInfo.isGood) { fetchUserInfo() }
+                }
+            })
+            .catch((e) => console.log("userinfo err: " + e))
+    }
 
-        const handleClick = () => {
-            console.log('clicked')
-            // setPlayLists(prev => {
-            //     prev[playLists.indexOf(playList)].isToggled = !prev[playLists.indexOf(playList)].isToggled
-            //     return [
-            //         ...prev
-            //     ]
-            // })
+    // (2) ----------------------
+    let fetchPlayList = (isFetchingPlayList) => {
+        fetch(URLS[1], {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            },
+        })
+            .then(result => result.json())
+            .then(data => {
+                isFetchingPlayList = true
 
-            // FETCH: tracks of PLAYLIST on click
-            // let playlistTracks = null
-            // fetch(playList.tracks.href, {
-            //     method: 'GET',
-            //     headers: {
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json',
-            //         'Authorization': 'Bearer ' + accessToken
-            //     }
-            // })
-            // .then(response => response.json())
-            // .then(data => playlistTracks = data)
-            // .catch(e => console.log('playlistTracks error: ' + e))
-            // console.log(playlistTracks)
+                if (isFetchingPlayList) {
+                    localStorage.setItem('playlist', JSON.stringify(data.items))
+                    setPlayLists(JSON.parse(localStorage.getItem('playlist')))
+
+                    // Run again 
+                    if (playLists == null || playLists == undefined) {
+                        fetchToken()
+                        fetchPlayList()
+                    }
+                }
+            })
+            .catch((e) => window.location = window.location.href)
+    }
+
+    React.useEffect(() => {
+        let isFetchingToken = false
+        let isFetchingUserInfo = false
+        let isFetchingPlayList = false
+
+
+        // API CALLS
+        fetchToken(isFetchingToken)
+        fetchUserInfo(isFetchingUserInfo)
+        fetchPlayList(isFetchingPlayList)
+
+        return () => {
+            isFetchingToken, isFetchingUserInfo, isFetchingPlayList = false
         }
 
+    }, [])
+
+
+    const playListElements = playLists.map((playList) => {
+        fetch(playList.images[0].url, { method: 'HEAD' })
+        .then( res => {
+            if (!res.ok) { playList.images[0].url = "cd.png" }
+        })
 
         return (
-            <div className="playList text-white">
-                <p> this is a playlist </p>
-                {/* <img src={playList.images[1]}></img> */}
-                {/* <p>{playList.name}</p> */}
-                {/* <button className="bg-blue-400" onClick={handleClick}>show playlist</button> */}
-                {/* {playLists[playLists.indexOf(playList)].isToggled && <p>to be embedded: {playList.link}</p>} */}
-            </div>
+            <>
+                <img className="playList-image" src={playList.images[0].url ? playList.images[0].url : "cd.png"}></img>
+                <p> {playList.name} </p>
+            </>
         )
     })
 
-    // return -----------------------------------------------------
+    const handleClick = () => {
+        console.log('clicked')
+
+        // FETCH: tracks of PLAYLIST on click
+        //     let playlistTracks = null
+        //     fetch(playList.tracks.href, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json',
+        //             'Authorization': 'Bearer ' + token
+        //         }
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => playlistTracks = data)
+        //     .catch(e => console.log('playlistTracks error: ' + e))
+        //     console.log(playlistTracks)
+
+    }
+
 
     return (
         <>
@@ -171,12 +224,14 @@ export default function MusicApp() {
                         </div>
                     </a>
                 }
+            </div>
 
-                <div className="playlist-table">
-                    {playlistElements}
+            <div className='body'>
+                <h3>Public Playlists</h3>
+                <div className="overflow-x-auto">
+                    {playListElements && playListElements}
                 </div>
             </div>
         </>
     )
-
 }
