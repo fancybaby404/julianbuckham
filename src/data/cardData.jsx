@@ -21,4 +21,11 @@ export default [
         link: 'https://fancybaby404.itch.io/escapegranny',
         tags: [],
     }, 
+    {
+        title: 'MusicPlayer',
+        description: 'A music player that is created with Java using built-in and third-party libraries. Utilizing "Swing" for the GUI portion of the application.',
+        img: 'https://user-images.githubusercontent.com/53817791/158954049-d0e6370c-a468-4c64-b912-54d4f362d06f.png',
+        link: 'https://github.com/fancybaby404/MusicPlayer',
+        tags: [],
+    }
 ]

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faMusic, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Nav() {
@@ -14,11 +14,17 @@ export default function Nav() {
                 </button>
             </Link>
 
-            <Link to="/music">
+            <Link to="/playground">
+                <button className="yellow-color m-1 py-1 px-3 rounded-lg">
+                    <FontAwesomeIcon icon={faUmbrellaBeach} />
+                </button>
+            </Link>
+
+            {/* <Link to="/music">
                 <button className="yellow-color m-1 py-1 px-3 rounded-lg">
                     <FontAwesomeIcon icon={faMusic} />
                 </button>
-            </Link>
+            </Link> */}
         </div>
     )
 
