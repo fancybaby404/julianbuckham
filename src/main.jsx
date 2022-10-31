@@ -10,7 +10,7 @@ import Playground from './components/Playground/Playground'
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/julianMacato" element={<App />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/music" element={<MusicApp />} />
         </Routes>
