@@ -45,6 +45,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  
 }
 
 .sidebar--socials-btn {
@@ -54,7 +55,6 @@
   padding: 8px;
   color: black;
   background-color: #fdc823;
-
   text-align: start;
 }
 
@@ -73,16 +73,20 @@
       overflow-x: hidden;
       align-items: center;
       width: 100% !important;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 30px;
   }
   .sidebar--img {
-      width: 80px !important;
-      margin-right: 20px;
+      width: 100px !important;
+      /* padding: 0 50px; */
   }
   .sidebar--description {
       max-width: 435px;
   }
 
   .sidebar--text--img {
+      padding: 0 30px;
       display: flex;
       align-items: center;
   }
@@ -93,9 +97,19 @@
   }
 
   .sidebar--socials-btn {
-      width: 200px;
+      width: 150px;
       margin: 10px;
   }
+
+  .nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0;
+
+  }
+
 }
 
 /* CARD VIEWS */

@@ -37,10 +37,8 @@ export default function Playground () {
 				</Canvas>
 			</div>
 			<div style={{"width": "20vw", "height": "100vh"}} className="flex content-center justify-center h-full align-middle flex-wrap bg-yellow-400">
-				<h1 className="text-9xl flex justify-center">yes.</h1>
+				<h1 className="sm:text-sm lg:text-9xl flex justify-center">yes.</h1>
 			</div>
 		</div>
-
 	)
-
 }
