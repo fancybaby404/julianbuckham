@@ -1,6 +1,6 @@
 import React from 'react'
-import Nav from '../Nav/Nav'
-import '../../Music.css'
+import Nav from '../components/Nav' 
+import '../styles/music.css'
 
 // GLOBALS --------------------------------------------------------------
 const userName = 'macato404'
@@ -24,8 +24,8 @@ const URLS = [`https://api.spotify.com/v1/users/${userName}/`, `https://api.spot
 // ]
 
 const spotifyAuth = {
-    clientID: "3bb99f54f08248b5b8c812d2d4414cab",
-    clientKey: "10be7184c7fe49909b55d0cfa0527c5a",
+    clientID: "",
+    clientKey: "",
     redirectURL: "http://localhost:3000",
     authEndpoint: 'https://account.spotify.com/authorize',
     responseType: 'token'

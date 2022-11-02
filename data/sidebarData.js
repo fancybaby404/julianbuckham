@@ -6,7 +6,7 @@ import {faEnvelope} from '@fortawesome/free-regular-svg-icons'
 export default [
     {
         name: "Julian Charles Macato",
-        description: "heyo, I am college student in the Philippines learning the ins and out of software development",
+        description: "alo, i am a college student in the Philippines learning the ins and out of software development 🫡",
 
         socials: [
             {

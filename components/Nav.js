@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import Link  from "next/link";
+import styles from '../styles/Home.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faMusic, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons'
@@ -7,20 +8,20 @@ import { faHouse, faMusic, faUmbrellaBeach } from '@fortawesome/free-solid-svg-i
 
 export default function Nav() {
     return (
-        <div className='absolute top-0 right-0 rounded-lg w-h/4 bg-black m-5'>
-            <Link to="/">
-                <button  className="yellow-color m-1 py-1 px-3 rounded-lg">
+        <div className={ `absolute top-0 right-0 rounded-lg w-h/4 bg-black m-5` }>
+            <Link href="/">
+                <button  className={`${styles["yellow-color"]} m-1 py-1 px-3 rounded-lg`}>
                     <FontAwesomeIcon icon={faHouse} />
                 </button>
             </Link>
 
-            <Link to="/playground">
-                <button className="yellow-color m-1 py-1 px-3 rounded-lg">
+            <Link href="/playground">
+                <button className={`${styles["yellow-color"]} m-1 py-1 px-3 rounded-lg`}>
                     <FontAwesomeIcon icon={faUmbrellaBeach} />
                 </button>
             </Link>
 
-            {/* <Link to="/music">
+            {/* <Link href="/music">
                 <button className="yellow-color m-1 py-1 px-3 rounded-lg">
                     <FontAwesomeIcon icon={faMusic} />
                 </button>

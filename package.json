@@ -1,36 +1,32 @@
 {
-  "name": "julianbuckham",
+  "name": "julian_macato",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "deploy": "npm run build && git add dist -f && git commit -m'hosting'  && git subtree push --prefix dist origin gh-pages",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-regular-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^0.27.2",
-    "buffer": "^6.0.3",
-    "qs": "^6.11.0",
-    "react": "^18.2.0",
+    "@react-three/fiber": "^8.9.0",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.1",
+    "next": "13.0.1",
+    "react": "18.2.0",
     "react-confetti": "^6.1.0",
-    "react-dom": "^18.2.0",
-    "three": "^0.145.0"
+    "react-dom": "18.2.0",
+    "three": "^0.146.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.1",
-    "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.16",
-    "react-router-dom": "^6.3.0",
-    "tailwindcss": "^3.1.8",
-    "vite": "^3.0.7"
+    "autoprefixer": "^10.4.13",
+    "next-transpile-modules": "^10.0.0",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.2.1"
   }
 }
