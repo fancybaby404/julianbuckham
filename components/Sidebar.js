@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 import SidebarSocials from './SidebarSocials'
 import Confetti from 'react-confetti'
 import styles from '../styles/Home.module.css'
@@ -58,15 +59,15 @@ export default function Sidebar (props) {
         }
             {/* Name, ProfImg */}
             <div className={`${styles["sidebar--text--img"]}`}>
-                <img class={`${styles["prof-img"]} ${styles["sidebar--img"]} rounded-sm w-6/12 self-center`}src={"https://avatars.githubusercontent.com/u/53817791?v=4"} alt="profile picture"></img>
+                <Image width={250} height={250} className={`${styles["prof-img"]} ${styles["sidebar--img"]} rounded-sm w-6/12 self-center`}src={"https://avatars.githubusercontent.com/u/53817791?v=4"} alt="profile picture"></Image>
                 <h1 className={`font-black text-center text-3xl`}>{props.name}</h1>
             </div>
 
             {/* Toggle */}
-            <label for="default-toggle" class="mt-3 inline-flex relative items-center cursor-pointer mx-auto">
-                <input onClick={handleToggle} checked={toggle} type="checkbox" value="" id="default-toggle" class="sr-only peer"></input>
-                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                <span class="ml-3 text-sm font-medium">party party</span>
+            <label htmlFor="default-toggle" className="mt-3 inline-flex relative items-center cursor-pointer mx-auto">
+                <input onChange={handleToggle} checked={toggle} type="checkbox" value="" id="default-toggle" className="sr-only peer"></input>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span className="ml-3 text-sm font-medium">party party</span>
             </label>
 
             {/* Description */}
