@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGithub, faYoutube, faDiscord, faTwitter, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons'
-
 export default [
     {
         name: "Julian Charles Macato",
@@ -16,6 +15,18 @@ export default [
                 icon: <FontAwesomeIcon icon={faGithub} size="xl" />
             },
             {
+                socialName: "email",
+                socialUserName: "julianbuckham404@gmail.com",
+                socialLink: "julianbuckham404@gmail.com",
+                icon: <FontAwesomeIcon icon={faEnvelope} size="xl"/>
+            },
+            {
+                socialName: "linkedin",
+                socialUserName: "julian-macato",
+                socialLink: "https://linkedin.com/in/julian-macato",
+                icon: <FontAwesomeIcon icon={faLinkedin} size="xl"/>
+            },
+            {
                 socialName: "youtube",
                 socialUserName: "/c/fancybaby",
                 socialLink: "https://www.youtube.com/c/fancybaby404",
@@ -27,24 +38,12 @@ export default [
                 socialLink: "https://discord.com/users/216590964091781122",
                 icon: <FontAwesomeIcon icon={faDiscord} size="xl"/>
             },
-            {
-                socialName: "twitter",
-                socialUserName: "@MacatoJulian",
-                socialLink: "https://twitter.com/MacatoJulian",
-                icon: <FontAwesomeIcon icon={faTwitter} size="xl"/>
-            },
-            {
-                socialName: "linkedin",
-                socialUserName: "julian-macato",
-                socialLink: "https://linkedin.com/in/julian-macato",
-                icon: <FontAwesomeIcon icon={faLinkedin} size="xl"/>
-            },
-            {
-                socialName: "email",
-                socialUserName: "julianbuckham404@gmail.com",
-                socialLink: "julianbuckham404@gmail.com",
-                icon: <FontAwesomeIcon icon={faEnvelope} size="xl"/>
-            }
+            // {
+            //     socialName: "twitter",
+            //     socialUserName: "@MacatoJulian",
+            //     socialLink: "https://twitter.com/MacatoJulian",
+            //     icon: <FontAwesomeIcon icon={faTwitter} size="xl"/>
+            // },
         ]
     }, 
 ]
