@@ -1,6 +1,13 @@
 
 export default [
     {
+        title: "EasyCart",
+        description: "a e-commerce website that allows business owners to list their products in their own customized website. With an admin dashboard, it allows easy adding/customizing data within the website. It is fully cutomizable and integrated with facebook messenger for messaging clients.",
+        img: "https://cdn.discordapp.com/attachments/1062731548744503428/1243896982062501918/Screenshot_25-5-2024_20140_hauntedhook.vercel.app.jpeg?ex=665324d7&is=6651d357&hm=eef6954ae6b2a39204beea48c80f36d025d22c7a9590c21c301d65114a76fd91&",
+        link: "hauntedhook.vercel.app",
+        tags: [],
+    },
+    {
         title: 'minimalTab',
         description: 'A minimalist ToDo list when opening a new tab. Supports custom background such as gifs, png and etc. This is done by providing a link to the image/gif or the file itself.',
         img: 'https://user-images.githubusercontent.com/53817791/138581155-eba67ed9-0bdf-4dcd-b30f-90b1cbd9f8b1.png',
